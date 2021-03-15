@@ -1,0 +1,396 @@
+@import "./styles/main.scss";
+
+body {
+  background-color: #222b31;
+  color: #fff;
+  font-family: Verdana, sans-serif;
+}
+
+main {
+  min-height: calc(100vh - 200px);
+}
+
+.content-wrapper {
+  max-width: 1400px;
+  width: 75%;
+  margin: 0 auto;
+
+  @media #{$mq-760-down} {
+    width: 90%;
+  }
+}
+
+.shows {
+  &__title {
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+
+    @media #{$mq-1180-up} {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.episodes {
+  padding-top: 5rem;
+
+  a {
+    color: #fff;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+
+    @media #{$mq-620-down} {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    tbody {
+      background-color: lighten($dark-color, 10%);
+    }
+
+    th {
+      background-color: darken($primary-color, 10%);
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    td {
+      padding: 0.5rem;
+    }
+  }
+}
+
+.show {
+  text-align: center;
+
+  &__image {
+    width: 100%;
+    box-shadow: 0 0 10px #000;
+  }
+
+  &__title {
+    margin: 0.5rem 0;
+  }
+
+  &__genres {
+    color: $primary-color;
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    @media #{$mq-760-down} {
+      display: none;
+    }
+  }
+}
+
+.cast {
+  padding-top: 5rem;
+
+  a {
+    color: $primary-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+
+    @media #{$mq-620-down} {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+
+    @media #{$mq-620-down} {
+      grid-template-columns: none;
+    }
+
+    @media #{$mq-1180-up} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      column-gap: 1rem;
+
+      &-image {
+        width: 100%;
+      }
+
+      &-title {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+.cast-credits {
+  padding-top: 5rem;
+
+  &__title {
+    color: $primary-color;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+
+    @media #{$mq-620-down} {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+
+    @media #{$mq-760-down} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media #{$mq-1180-up} {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    &-item {
+      width: 120px;
+
+      &-image {
+        width: 100%;
+        min-height: 168px;
+      }
+
+      &-text {
+        padding-top: 0.5rem;
+        text-align: center;
+      }
+
+      &-link {
+        color: $primary-color;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.show-info {
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding-top: 4rem;
+
+    @media #{$mq-620-down} {
+      grid-template-columns: none;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #000;
+  }
+
+  &__name {
+    color: $primary-color;
+    padding-top: 0.5rem;
+    font-size: 1.4rem;
+
+    @media #{$mq-620-down} {
+      text-align: center;
+    }
+  }
+
+  &__about {
+    &-title {
+      color: $primary-color;
+      padding-bottom: 1rem;
+      font-size: 1.8rem;
+
+      @media #{$mq-620-down} {
+        font-size: 1.4rem;
+      }
+    }
+
+    &-text {
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+    }
+
+    &-summary {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.episode-info {
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding-top: 4rem;
+
+    @media #{$mq-620-down} {
+      grid-template-columns: none;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #000;
+  }
+
+  &__name {
+    color: $primary-color;
+    padding-top: 0.5rem;
+    font-size: 1.4rem;
+
+    @media #{$mq-620-down} {
+      text-align: center;
+    }
+  }
+
+  &__about {
+    &-title {
+      color: $primary-color;
+      padding-bottom: 1rem;
+      font-size: 1.8rem;
+
+      @media #{$mq-620-down} {
+        font-size: 1.4rem;
+        padding-top: 2rem;
+      }
+    }
+
+    &-text {
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+    }
+
+    &-show-link {
+      color: $primary-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-summary {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.person-info {
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding-top: 4rem;
+
+    @media #{$mq-620-down} {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #000;
+  }
+
+  &__about {
+    &-title {
+      color: $primary-color;
+      padding-bottom: 1rem;
+      font-size: 1.8rem;
+
+      @media #{$mq-620-down} {
+        font-size: 1.4rem;
+      }
+    }
+
+    &-text {
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+    }
+  }
+}
+
+.character-info {
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding-top: 4rem;
+
+    @media #{$mq-620-down} {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #000;
+  }
+
+  &__about {
+    &-title {
+      color: $primary-color;
+      padding-bottom: 1rem;
+      font-size: 1.8rem;
+
+      @media #{$mq-620-down} {
+        font-size: 1.4rem;
+      }
+    }
+
+    &-text {
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+    }
+  }
+}
