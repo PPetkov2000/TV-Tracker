@@ -13,7 +13,7 @@ git clone https://github.com/PPetkov2000/tv-tracker
 ```sh
 npm install in the root folder
 ```
-3. Create .env file in the root folder and add the following (get your api from https://www.tvmaze.com/)
+3. Create .env file in the root folder and add the following (get your api key from https://www.tvmaze.com/)
 ```sh
 TV_MAZE_API_KEY=your_tvmaze_api_key
 ```
