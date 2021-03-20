@@ -394,3 +394,27 @@ main {
     }
   }
 }
+
+.paginate {
+  &__list {
+    margin-top: 2rem;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+
+    &-link {
+      width: 40px;
+      height: 100%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid #888;
+
+      &.active {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
