@@ -15,6 +15,7 @@ function App() {
       <main>
         <Switch>
           <Route path="/" exact component={Shows} />
+          <Route path="/shows/page/:pageNumber" exact component={Shows} />
           <Route path="/shows/:id" exact component={ShowInfo} />
           <Route path="/episodes/:id" component={EpisodeInfo} />
           <Route path="/people/:id" component={PersonInfo} />
