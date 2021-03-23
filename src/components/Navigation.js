@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchForm from "./SearchForm";
 
 const Navigation = () => {
   return (
@@ -9,6 +10,7 @@ const Navigation = () => {
           TV Tracker
         </Link>
       </div>
+      <SearchForm />
       <ul className="navbar__list">
         <li className="navbar__list-item">
           <Link to="/" className="navbar__list-link">
