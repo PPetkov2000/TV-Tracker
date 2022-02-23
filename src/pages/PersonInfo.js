@@ -67,12 +67,8 @@ import { rootUrl } from "../utils/rootUrl";
 import { defaultImage } from "../utils/defaultImage";
 
 const PersonInfo = ({ match }) => {
-  const { loading, data: person, error } = useFetch(
-    `${rootUrl}/people/${match.params.id}`
-  );
-  const { data: castCredits } = useFetch(
-    `${rootUrl}/people/${match.params.id}/castcredits?embed=show`
-  );
+  const { loading, data: person, error } = useFetch(`${rootUrl}/people/${match.params.id}`);
+  const { data: castCredits } = useFetch(`${rootUrl}/people/${match.params.id}/castcredits?embed=show`);
   const personShows = castCredits?.map((x) => x._embedded.show);
 
   return loading ? (
@@ -83,11 +79,7 @@ const PersonInfo = ({ match }) => {
     <>
       <section className="person-info">
         <div className="content-wrapper">
-          <img
-            src={person.image ? person.image.medium : defaultImage}
-            alt={person.name}
-            className="person-info__image"
-          />
+          <img src={person.image ? person.image.medium : defaultImage} alt={person.name} className="person-info__image" />
           <article className="person-info__about">
             <h2 className="person-info__about-title">Person Info</h2>
             <p className="person-info__about-text">
@@ -97,9 +89,7 @@ const PersonInfo = ({ match }) => {
               <strong>Gender:</strong> {person.gender}
             </p>
             <p className="person-info__about-text">
-              <strong>Age:</strong>{" "}
-              {new Date(Date.now()).toISOString().split("-")[0] -
-                person.birthday.split("-")[0]}
+              <strong>Age:</strong> {new Date(Date.now()).toISOString().split("-")[0] - person.birthday.split("-")[0]}
             </p>
             <p className="person-info__about-text">
               <strong>Birthday:</strong> {person.birthday}

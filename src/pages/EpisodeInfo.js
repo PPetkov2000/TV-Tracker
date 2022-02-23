@@ -19,27 +19,19 @@ const EpisodeInfo = ({ match }) => {
     <section className="episode-info">
       <div className="content-wrapper">
         <div>
-          <img
-            src={episode.image ? episode.image.medium : defaultImage}
-            alt={episode.name}
-            className="episode-info__image"
-          />
+          <img src={episode.image ? episode.image.medium : defaultImage} alt={episode.name} className="episode-info__image" />
           <h3 className="episode-info__name">{episode.name}</h3>
         </div>
         <article className="episode-info__about">
           <h2 className="episode-info__about-title">Episode Info</h2>
           <p className="episode-info__about-text">
             <strong>Show:</strong>{" "}
-            <Link
-              to={`/shows/${episode._embedded.show.id}`}
-              className="episode-info__about-show-link"
-            >
+            <Link to={`/shows/${episode._embedded.show.id}`} className="episode-info__about-show-link">
               {episode._embedded.show.name}
             </Link>
           </p>
           <p className="episode-info__about-text">
-            <strong>Number:</strong> Season {episode.season}, Episode{" "}
-            {episode.number}
+            <strong>Number:</strong> Season {episode.season}, Episode {episode.number}
           </p>
           <p className="episode-info__about-text">
             <strong>Airdate:</strong> {episode.airdate}
@@ -47,10 +39,7 @@ const EpisodeInfo = ({ match }) => {
           <p className="episode-info__about-text">
             <strong>Runtime:</strong> {episode.runtime} min
           </p>
-          <div
-            dangerouslySetInnerHTML={{ __html: episode.summary }}
-            className="episode-info__about-summary"
-          ></div>
+          <div dangerouslySetInnerHTML={{ __html: episode.summary }} className="episode-info__about-summary"></div>
         </article>
       </div>
     </section>

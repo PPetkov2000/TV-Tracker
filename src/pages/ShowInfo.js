@@ -9,9 +9,7 @@ import { defaultImage } from "../utils/defaultImage";
 import { episodesLimit, castLimit } from "../utils/itemsLimit";
 
 const ShowInfo = ({ match }) => {
-  const { loading, data: show, error } = useFetch(
-    `${rootUrl}/shows/${match.params.id}?embed[]=episodes&embed[]=cast`
-  );
+  const { loading, data: show, error } = useFetch(`${rootUrl}/shows/${match.params.id}?embed[]=episodes&embed[]=cast`);
 
   return loading ? (
     <Loader />
@@ -22,18 +20,13 @@ const ShowInfo = ({ match }) => {
       <section className="show-info">
         <div className="content-wrapper">
           <div>
-            <img
-              src={show.image ? show.image.medium : defaultImage}
-              alt={show.name}
-              className="show-info__image"
-            />
+            <img src={show.image ? show.image.medium : defaultImage} alt={show.name} className="show-info__image" />
             <h3 className="show-info__name">{show.name}</h3>
           </div>
           <article className="show-info__about">
             <h2 className="show-info__about-title">Show Info</h2>
             <p className="show-info__about-text">
-              <strong>Schedule:</strong> {show.schedule.days[0]} at{" "}
-              {show.schedule.time} ({show.runtime} min)
+              <strong>Schedule:</strong> {show.schedule.days[0]} at {show.schedule.time} ({show.runtime} min)
             </p>
             <p className="show-info__about-text">
               <strong>Status:</strong> {show.status}
@@ -50,20 +43,11 @@ const ShowInfo = ({ match }) => {
             <p className="show-info__about-text">
               <strong>Episodes:</strong> {show._embedded.episodes.length}
             </p>
-            <div
-              dangerouslySetInnerHTML={{ __html: show.summary }}
-              className="show-info__about-summary"
-            ></div>
+            <div dangerouslySetInnerHTML={{ __html: show.summary }} className="show-info__about-summary"></div>
           </article>
         </div>
       </section>
-      <Episodes
-        episodes={[
-          ...show._embedded.episodes
-            .slice(show._embedded.episodes.length - episodesLimit)
-            .reverse(),
-        ]}
-      />
+      <Episodes episodes={[...show._embedded.episodes.slice(show._embedded.episodes.length - episodesLimit).reverse()]} />
       <Cast cast={show._embedded.cast.slice(0, castLimit)} />
     </>
   );

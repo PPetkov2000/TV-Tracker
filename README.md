@@ -22,7 +22,6 @@ npm start
 http://localhost:3000/
 ```
 
-
 ## Website
 
 ![TV-Tracker](https://github.com/PPetkov2000/tv-tracker/blob/main/app-view.png)

@@ -62,13 +62,8 @@ const Episodes = ({ episodes }) => {
           <tbody>
             {episodes.map((episode) => (
               <tr key={episode.id}>
-                <td>
-                  {episode.season}x
-                  {episode.number < 10 ? `0${episode.number}` : episode.number}
-                </td>
-                <td>
-                  <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
-                </td>
+                <td>{episode.season}x{episode.number < 10 ? `0${episode.number}` : episode.number}</td>
+                <td><Link to={`/episodes/${episode.id}`}>{episode.name}</Link></td>
                 <td>{episode.airdate}</td>
                 <td>{episode.airtime}</td>
                 <td>{episode.runtime} min</td>
