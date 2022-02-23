@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .footer {
   background-color: $navbar-color;
   margin-top: 3rem;
@@ -8,3 +9,15 @@
     text-align: center;
   }
 }
+=======
+.footer {
+  background-color: $navbar-color;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  height: 90px;
+
+  &__text {
+    text-align: center;
+  }
+}
+>>>>>>> 4a678be... initial commit
