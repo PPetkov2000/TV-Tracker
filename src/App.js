@@ -8,7 +8,7 @@ import PersonInfo from "./pages/PersonInfo";
 import CharacterInfo from "./pages/CharacterInfo";
 import EpisodeInfo from "./pages/EpisodeInfo";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Header />
@@ -26,6 +26,6 @@ function App() {
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;

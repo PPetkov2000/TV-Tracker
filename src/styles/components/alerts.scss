@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "./component-variants.scss";
 
 @each $variant, $color in $variants {
@@ -5,3 +6,12 @@
     @include alert-variant($color);
   }
 }
+=======
+@import "./component-variants.scss";
+
+@each $variant, $color in $variants {
+  .alert-#{$variant} {
+    @include alert-variant($color);
+  }
+}
+>>>>>>> 4a678be... initial commit

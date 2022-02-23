@@ -10,18 +10,9 @@ const CastCredits = ({ shows }) => {
         <ul className="cast-credits__list">
           {shows.map((show) => (
             <li key={show.id} className="cast-credits__list-item">
-              <img
-                src={show.image ? show.image.medium : defaultImage}
-                alt={show.name}
-                className="cast-credits__list-item-image"
-              />
+              <img src={show.image ? show.image.medium : defaultImage} alt={show.name} className="cast-credits__list-item-image" />
               <p className="cast-credits__list-item-text">
-                <Link
-                  to={`/shows/${show.id}`}
-                  className="cast-credits__list-item-link"
-                >
-                  {show.name}
-                </Link>
+                <Link to={`/shows/${show.id}`} className="cast-credits__list-item-link">{show.name}</Link>
               </p>
             </li>
           ))}

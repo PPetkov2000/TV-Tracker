@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -34,3 +35,41 @@
     }
   }
 }
+=======
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $navbar-color;
+
+  &__brand {
+    padding: 0 1rem;
+
+    &-logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    height: 60px;
+
+    &-link {
+      color: #fff;
+      padding: calc(40px / 2) 1.5rem;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+
+      &:active {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+>>>>>>> 4a678be... initial commit
