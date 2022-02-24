@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -7,11 +8,12 @@ import { rootUrl } from "../utils/rootUrl";
 import { showsLimit } from "../utils/itemsLimit";
 import Paginate from "../components/Paginate";
 
-const Shows = ({ match }) => {
+const Shows = () => {
+  const params = useParams();
   const { loading, data: shows, error } = useFetch(`${rootUrl}/shows`);
-  const page = Number(match.params.pageNumber) || 1;
+  const page = Number(params.pageNumber) || 1;
   const pages = shows && Math.ceil(shows.length / showsLimit);
-  const name = match.params.name;
+  const name = params.name;
   const { data: searchedShows } = useFetch(`${rootUrl}/search/shows?q=${name}`);
 
   return (

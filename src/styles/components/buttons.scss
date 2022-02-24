@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import "./component-variants.scss";
 
 @each $variant, $color in $variants {
@@ -6,12 +5,3 @@
     @include button-variant($color);
   }
 }
-=======
-@import "./component-variants.scss";
-
-@each $variant, $color in $variants {
-  .button-#{$variant} {
-    @include button-variant($color);
-  }
-}
->>>>>>> 4a678be... initial commit
