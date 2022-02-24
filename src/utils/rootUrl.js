@@ -1,1 +1,1 @@
-export const rootUrl = "http://api.tvmaze.com";
+export const rootUrl = "https://api.tvmaze.com";
