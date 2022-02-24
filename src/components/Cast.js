@@ -15,7 +15,7 @@ const Cast = ({ cast }) => {
                 <Link to={`/people/${person.id}`}>
                   <h3 className="cast__list-item-title">{person.name}</h3>
                 </Link>
-                <p className="cast__list-item-text">as<Link to={`/characters/${character.id}`}>{character.name}</Link></p>
+                <p className="cast__list-item-text">as <Link to={`/characters/${character.id}`}>{character.name}</Link></p>
               </div>
             </li>
           ))}

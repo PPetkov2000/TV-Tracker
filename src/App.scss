@@ -432,5 +432,9 @@ main {
     &:hover {
       color: #333;
     }
+
+    @media #{$mq-620-down} {
+      display: none;
+    }
   }
 }
