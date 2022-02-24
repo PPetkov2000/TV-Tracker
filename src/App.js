@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,15 +13,15 @@ const App = () => {
     <Router>
       <Header />
       <main>
-        <Switch>
-          <Route path="/" exact component={Shows} />
-          <Route path="/shows/page/:pageNumber" exact component={Shows} />
-          <Route path="/search/shows/:name" exact component={Shows} />
-          <Route path="/shows/:id" exact component={ShowInfo} />
-          <Route path="/episodes/:id" component={EpisodeInfo} />
-          <Route path="/people/:id" component={PersonInfo} />
-          <Route path="/characters/:id" component={CharacterInfo} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Shows />} />
+          <Route path="/shows/page/:pageNumber" exact element={<Shows />} />
+          <Route path="/search/shows/:name" exact element={<Shows />} />
+          <Route path="/shows/:id" exact element={<ShowInfo />} />
+          <Route path="/episodes/:id" element={<EpisodeInfo />} />
+          <Route path="/people/:id" element={<PersonInfo />} />
+          <Route path="/characters/:id" element={<CharacterInfo />} />
+        </Routes>
       </main>
       <Footer />
     </Router>

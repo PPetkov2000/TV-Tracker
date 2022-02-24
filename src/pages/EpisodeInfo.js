@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import useFetch from "../hooks/useFetch";
 import { rootUrl } from "../utils/rootUrl";
 import { defaultImage } from "../utils/defaultImage";
 
-const EpisodeInfo = ({ match }) => {
+const EpisodeInfo = () => {
+  const params = useParams();
   const { loading, data: episode, error } = useFetch(
-    `${rootUrl}/episodes/${match.params.id}?embed=show`
+    `${rootUrl}/episodes/${params.id}?embed=show`
   );
 
   return loading ? (

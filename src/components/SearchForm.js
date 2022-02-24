@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
 
   return (
@@ -11,7 +11,7 @@ const SearchForm = () => {
       onSubmit={(e) => {
         e.preventDefault();
         if (keyword) {
-          history.push(`/search/shows/${keyword}`);
+          navigate(`/search/shows/${keyword}`);
         }
       }}
     >

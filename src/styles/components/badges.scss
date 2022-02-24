@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import "./component-variants.scss";
 
 @each $variant, $color in $variants {
@@ -6,12 +5,3 @@
     @include badge-variant($color);
   }
 }
-=======
-@import "./component-variants.scss";
-
-@each $variant, $color in $variants {
-  .badge-#{$variant} {
-    @include badge-variant($color);
-  }
-}
->>>>>>> 4a678be... initial commit

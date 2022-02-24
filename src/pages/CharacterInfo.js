@@ -1,12 +1,14 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import useFetch from "../hooks/useFetch";
 import { rootUrl } from "../utils/rootUrl";
 import { defaultImage } from "../utils/defaultImage";
 
-const CharacterInfo = ({ match }) => {
-  const { loading, data: character, error } = useFetch(`${rootUrl}/characters/${match.params.id}?embed=castcredits`);
+const CharacterInfo = () => {
+  const params = useParams();
+  const { loading, data: character, error } = useFetch(`${rootUrl}/characters/${params.id}?embed=castcredits`);
 
   return loading ? (
     <Loader />
