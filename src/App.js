@@ -15,9 +15,9 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Shows />} />
-          <Route path="/shows/page/:pageNumber" exact element={<Shows />} />
-          <Route path="/search/shows/:name" exact element={<Shows />} />
-          <Route path="/shows/:id" exact element={<ShowInfo />} />
+          <Route path="/shows/page/:pageNumber" element={<Shows />} />
+          <Route path="/search/shows/:name" element={<Shows />} />
+          <Route path="/shows/:id" element={<ShowInfo />} />
           <Route path="/episodes/:id" element={<EpisodeInfo />} />
           <Route path="/people/:id" element={<PersonInfo />} />
           <Route path="/characters/:id" element={<CharacterInfo />} />

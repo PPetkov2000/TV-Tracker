@@ -33,4 +33,19 @@
       }
     }
   }
+
+  @media #{$mq-620-down} {
+    &__brand-logo {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    &__list {
+      height: 50px;
+
+      &-link {
+        padding-inline: 1rem;
+      }
+    }
+  }
 }
