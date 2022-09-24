@@ -1,12 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.scss";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Shows from "./pages/Shows";
-import ShowInfo from "./pages/ShowInfo";
-import PersonInfo from "./pages/PersonInfo";
-import CharacterInfo from "./pages/CharacterInfo";
-import EpisodeInfo from "./pages/EpisodeInfo";
+import { Suspense, lazy } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Loader from './components/Loader'
+import Header from './components/Header'
+import './App.scss'
+
+const Footer = lazy(() => import('./components/Footer'))
+const Shows = lazy(() => import('./pages/Shows'))
+const ShowInfo = lazy(() => import('./pages/ShowInfo'))
+const PersonInfo = lazy(() => import('./pages/PersonInfo'))
+const CharacterInfo = lazy(() => import('./pages/CharacterInfo'))
+const EpisodeInfo = lazy(() => import('./pages/EpisodeInfo'))
 
 const App = () => {
   return (
@@ -14,18 +17,69 @@ const App = () => {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Shows />} />
-          <Route path="/shows/page/:pageNumber" element={<Shows />} />
-          <Route path="/search/shows/:name" element={<Shows />} />
-          <Route path="/shows/:id" element={<ShowInfo />} />
-          <Route path="/episodes/:id" element={<EpisodeInfo />} />
-          <Route path="/people/:id" element={<PersonInfo />} />
-          <Route path="/characters/:id" element={<CharacterInfo />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Shows />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/shows/page/:pageNumber"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Shows />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/search/shows/:name"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Shows />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/shows/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ShowInfo />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/episodes/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <EpisodeInfo />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/people/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PersonInfo />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/characters/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <CharacterInfo />
+              </Suspense>
+            }
+          />
         </Routes>
       </main>
-      <Footer />
+      <Suspense fallback={<Loader />}>
+        <Footer />
+      </Suspense>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App
