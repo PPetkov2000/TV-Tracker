@@ -8,9 +8,7 @@ import { defaultImage } from "../utils/defaultImage";
 
 const EpisodeInfo = () => {
   const params = useParams();
-  const { loading, data: episode, error } = useFetch(
-    `${rootUrl}/episodes/${params.id}?embed=show`
-  );
+  const { loading, data: episode, error } = useFetch(`${rootUrl}/episodes/${params.id}?embed=show`);
 
   return loading ? (
     <Loader />
