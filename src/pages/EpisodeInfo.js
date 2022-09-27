@@ -1,14 +1,14 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import useFetch from "../hooks/useFetch";
-import { rootUrl } from "../utils/rootUrl";
-import { defaultImage } from "../utils/defaultImage";
+import React from 'react'
+import { Link, useParams } from 'react-router-dom'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import { defaultImage } from '../utils/defaultImage'
+import { useAsync } from '../hooks/useAsync'
+import TVMazeApi from '../services/api/TVMazeApi'
 
 const EpisodeInfo = () => {
-  const params = useParams();
-  const { loading, data: episode, error } = useFetch(`${rootUrl}/episodes/${params.id}?embed=show`);
+  const params = useParams()
+  const { loading, error, data: episode } = useAsync(() => TVMazeApi.getEpisodeDetails(params.id), [params.id])
 
   return loading ? (
     <Loader />
@@ -24,7 +24,7 @@ const EpisodeInfo = () => {
         <article className="episode-info__about">
           <h2 className="episode-info__about-title">Episode Info</h2>
           <p className="episode-info__about-text">
-            <strong>Show:</strong>{" "}
+            <strong>Show:</strong>{' '}
             <Link to={`/shows/${episode._embedded.show.id}`} className="episode-info__about-show-link">
               {episode._embedded.show.name}
             </Link>
@@ -42,7 +42,7 @@ const EpisodeInfo = () => {
         </article>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default EpisodeInfo;
+export default EpisodeInfo
