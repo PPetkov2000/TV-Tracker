@@ -1,17 +1,17 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import CastCredits from "../components/CastCredits";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import useFetch from "../hooks/useFetch";
-import { rootUrl } from "../utils/rootUrl";
-import { defaultImage } from "../utils/defaultImage";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import CastCredits from '../components/CastCredits'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import { defaultImage } from '../utils/defaultImage'
+import { useAsync } from '../hooks/useAsync'
+import TVMazeApi from '../services/api/TVMazeApi'
 
 const PersonInfo = () => {
-  const params = useParams();
-  const { loading, data: person, error } = useFetch(`${rootUrl}/people/${params.id}`);
-  const { data: castCredits } = useFetch(`${rootUrl}/people/${params.id}/castcredits?embed=show`);
-  const personShows = castCredits?.map((x) => x._embedded.show);
+  const params = useParams()
+  const { loading, error, data: person } = useAsync(() => TVMazeApi.getPersonDetails(params.id), [params.id])
+  const { data: castCredits } = useAsync(() => TVMazeApi.getCastCredits(params.id), [params.id])
+  const personShows = castCredits?.map((x) => x._embedded.show)
 
   return loading ? (
     <Loader />
@@ -31,7 +31,7 @@ const PersonInfo = () => {
               <strong>Gender:</strong> {person.gender}
             </p>
             <p className="person-info__about-text">
-              <strong>Age:</strong> {new Date(Date.now()).toISOString().split("-")[0] - person.birthday.split("-")[0]}
+              <strong>Age:</strong> {new Date(Date.now()).toISOString().split('-')[0] - person.birthday.split('-')[0]}
             </p>
             <p className="person-info__about-text">
               <strong>Birthday:</strong> {person.birthday}
@@ -44,7 +44,7 @@ const PersonInfo = () => {
       </section>
       {personShows && <CastCredits shows={personShows} />}
     </>
-  );
-};
+  )
+}
 
-export default PersonInfo;
+export default PersonInfo

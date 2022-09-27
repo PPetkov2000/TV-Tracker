@@ -1,17 +1,17 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import Episodes from "../components/Episodes";
-import Cast from "../components/Cast";
-import useFetch from "../hooks/useFetch";
-import { rootUrl } from "../utils/rootUrl";
-import { defaultImage } from "../utils/defaultImage";
-import { episodesLimit, castLimit } from "../utils/itemsLimit";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import Episodes from '../components/Episodes'
+import Cast from '../components/Cast'
+import { defaultImage } from '../utils/defaultImage'
+import { episodesLimit, castLimit } from '../utils/itemsLimit'
+import { useAsync } from '../hooks/useAsync'
+import TVMazeApi from '../services/api/TVMazeApi'
 
 const ShowInfo = () => {
-  const params = useParams();
-  const { loading, data: show, error } = useFetch(`${rootUrl}/shows/${params.id}?embed[]=episodes&embed[]=cast`);
+  const params = useParams()
+  const { loading, error, data: show } = useAsync(() => TVMazeApi.getShowDetails(params.id), [params.id])
 
   return loading ? (
     <Loader />
@@ -37,7 +37,7 @@ const ShowInfo = () => {
               <strong>Show Type:</strong> {show.type}
             </p>
             <p className="show-info__about-text">
-              <strong>Genres:</strong> {show.genres.join(" | ")}
+              <strong>Genres:</strong> {show.genres.join(' | ')}
             </p>
             <p className="show-info__about-text">
               <strong>Language:</strong> {show.language}
@@ -52,7 +52,7 @@ const ShowInfo = () => {
       <Episodes episodes={[...show._embedded.episodes.slice(show._embedded.episodes.length - episodesLimit).reverse()]} />
       <Cast cast={show._embedded.cast.slice(0, castLimit)} />
     </>
-  );
-};
+  )
+}
 
-export default ShowInfo;
+export default ShowInfo

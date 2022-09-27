@@ -1,14 +1,14 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import useFetch from "../hooks/useFetch";
-import { rootUrl } from "../utils/rootUrl";
-import { defaultImage } from "../utils/defaultImage";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import { defaultImage } from '../utils/defaultImage'
+import { useAsync } from '../hooks/useAsync'
+import TVMazeApi from '../services/api/TVMazeApi'
 
 const CharacterInfo = () => {
-  const params = useParams();
-  const { loading, data: character, error } = useFetch(`${rootUrl}/characters/${params.id}?embed=castcredits`);
+  const params = useParams()
+  const { loading, error, data: character } = useAsync(() => TVMazeApi.getCharacterDetails(params.id), [params.id])
 
   return loading ? (
     <Loader />
@@ -26,7 +26,7 @@ const CharacterInfo = () => {
         </article>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default CharacterInfo;
+export default CharacterInfo
