@@ -28,9 +28,9 @@ const useAsyncInternal = (func, dependencies, initialLoading = false) => {
         return data
       })
       .catch((error) => {
-        setError(error.response.data.message || error?.message || error)
+        setError(error.response?.data?.message || error?.message || error)
         setData(undefined)
-        return Promise.reject(error.response.data.message || error?.message || error)
+        return Promise.reject(error.response?.data?.message || error?.message || error)
       })
       .finally(() => {
         setLoading(false)
