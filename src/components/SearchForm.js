@@ -5,16 +5,16 @@ const SearchForm = () => {
   const navigate = useNavigate()
   const [keyword, setKeyword] = useState('')
 
-  const handleSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault()
-    if (keyword) {
-      navigate(`/search/shows/${keyword}`)
-    }
+    if (!keyword) return
+    navigate(`/search/shows/${keyword}`)
+    setKeyword('')
   }
 
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
-      <input type="text" className="search-form__input" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+    <form className="search-form" onSubmit={submitHandler}>
+      <input type="text" className="search-form__input" placeholder="Search movies..." value={keyword} onChange={(e) => setKeyword(e.target.value)} />
       <button type="submit" className="search-form__button button-primary">
         Search
       </button>
