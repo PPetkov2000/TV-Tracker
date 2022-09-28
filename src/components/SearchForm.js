@@ -7,9 +7,9 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (keyword) {
-      navigate(`/search/shows/${keyword}`)
-    }
+    if (!keyword) return
+    navigate(`/search/shows/${keyword}`)
+    setKeyword('')
   }
 
   return (
