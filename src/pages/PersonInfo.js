@@ -21,7 +21,7 @@ const PersonInfo = () => {
     <>
       <section className="person-info">
         <div className="content-wrapper">
-          <img src={person.image ? person.image.medium : defaultImage} alt={person.name} className="person-info__image" />
+          <img src={person.image ? person.image.medium : defaultImage} alt={person.name} className="person-info__image" loading="lazy" />
           <article className="person-info__about">
             <h2 className="person-info__about-title">Person Info</h2>
             <p className="person-info__about-text">
