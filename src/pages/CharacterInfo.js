@@ -17,7 +17,7 @@ const CharacterInfo = () => {
   ) : (
     <section className="character-info">
       <div className="content-wrapper">
-        <img src={character.image ? character.image.medium : defaultImage} alt={character.name} className="character-info__image" />
+        <img src={character.image ? character.image.medium : defaultImage} alt={character.name} className="character-info__image" loading="lazy" />
         <article className="character-info__about">
           <h2 className="character-info__about-title">Character Info</h2>
           <p className="character-info__about-text">
