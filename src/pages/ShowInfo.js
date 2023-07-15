@@ -22,7 +22,7 @@ const ShowInfo = () => {
       <section className="show-info">
         <div className="content-wrapper">
           <div>
-            <img src={show.image ? show.image.medium : defaultImage} alt={show.name} className="show-info__image" />
+            <img src={show.image ? show.image.medium : defaultImage} alt={show.name} className="show-info__image" loading="lazy" />
             <h3 className="show-info__name">{show.name}</h3>
           </div>
           <article className="show-info__about">
