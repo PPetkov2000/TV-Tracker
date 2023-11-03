@@ -4,7 +4,7 @@ import CastCredits from '../components/CastCredits'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { defaultImage } from '../utils/defaultImage'
-import { useAsync } from '../hooks/useAsync'
+import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const PersonInfo = () => {
