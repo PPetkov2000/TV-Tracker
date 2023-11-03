@@ -6,7 +6,7 @@ import Episodes from '../components/Episodes'
 import Cast from '../components/Cast'
 import { defaultImage } from '../utils/defaultImage'
 import { episodesLimit, castLimit } from '../utils/itemsLimit'
-import { useAsync } from '../hooks/useAsync'
+import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const ShowInfo = () => {
