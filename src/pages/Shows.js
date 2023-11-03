@@ -5,7 +5,7 @@ import Message from '../components/Message'
 import Show from '../components/Show'
 import Paginate from '../components/Paginate'
 import { showsLimit } from '../utils/itemsLimit'
-import { useAsync } from '../hooks/useAsync'
+import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const Shows = () => {
