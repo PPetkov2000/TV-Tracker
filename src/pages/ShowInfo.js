@@ -17,6 +17,8 @@ const ShowInfo = () => {
     <Loader />
   ) : error ? (
     <Message variant="red">{error}</Message>
+  ) : !show ? (
+    <Message variant="info">There is no such show</Message>
   ) : (
     <>
       <section className="show-info">
