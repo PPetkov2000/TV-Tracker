@@ -36,7 +36,7 @@
       position: relative;
 
       &::before {
-        content: "";
+        content: '';
         transition: $main-transition;
         width: 0;
         height: 100%;
@@ -95,7 +95,7 @@
   position: relative;
 
   &::after {
-    content: "X";
+    content: 'X';
     position: absolute;
     right: 1rem;
     top: 50%;

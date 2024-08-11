@@ -1,21 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-export const useAsync = (func, dependencies = []) => {
-  const { execute, ...state } = useAsyncInternal(func, dependencies, true)
-
-  useEffect(() => {
-    execute()
-  }, [execute])
-
-  return state
-}
-
-export const useAsyncFn = (func, dependencies = []) => {
-  return useAsyncInternal(func, dependencies, false)
-}
-
-const useAsyncInternal = (func, dependencies, initialLoading = false) => {
-  const [loading, setLoading] = useState(initialLoading)
+const useAsync = (func, dependencies = [], immediate = true) => {
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState()
   const [data, setData] = useState()
 
@@ -28,14 +14,21 @@ const useAsyncInternal = (func, dependencies, initialLoading = false) => {
         return data
       })
       .catch((error) => {
-        setError(error.response?.data?.message || error?.message || error)
+        setError(error)
         setData(undefined)
-        return Promise.reject(error.response?.data?.message || error?.message || error)
+        return Promise.reject(error)
       })
       .finally(() => {
         setLoading(false)
       })
   }, dependencies)
 
+  useEffect(() => {
+    if (immediate) {
+      execute()
+    }
+  }, [execute, immediate])
+
   return { loading, error, data, execute }
 }
+export default useAsync

@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { defaultImage } from '../utils/defaultImage'
-import { useAsync } from '../hooks/useAsync'
+import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const EpisodeInfo = () => {
@@ -18,7 +18,7 @@ const EpisodeInfo = () => {
     <section className="episode-info">
       <div className="content-wrapper">
         <div>
-          <img src={episode.image ? episode.image.medium : defaultImage} alt={episode.name} className="episode-info__image" />
+          <img src={episode.image ? episode.image.medium : defaultImage} alt={episode.name} className="episode-info__image" loading="lazy" />
           <h3 className="episode-info__name">{episode.name}</h3>
         </div>
         <article className="episode-info__about">
