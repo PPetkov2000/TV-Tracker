@@ -5,23 +5,26 @@ const useAsync = (func, dependencies = [], immediate = true) => {
   const [error, setError] = useState()
   const [data, setData] = useState()
 
-  const execute = useCallback((...params) => {
-    setLoading(true)
-    return func(...params)
-      .then(({ data }) => {
-        setData(data)
-        setError(undefined)
-        return data
-      })
-      .catch((error) => {
-        setError(error)
-        setData(undefined)
-        return Promise.reject(error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, dependencies)
+  const execute = useCallback(
+    (...params) => {
+      setLoading(true)
+      return func(...params)
+        .then(({ data }) => {
+          setData(data)
+          setError(undefined)
+          return data
+        })
+        .catch((error) => {
+          setError(error)
+          setData(undefined)
+          return Promise.reject(error)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    },
+    [...dependencies, func]
+  )
 
   useEffect(() => {
     if (immediate) {
