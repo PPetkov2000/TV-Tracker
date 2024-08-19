@@ -1,22 +1,28 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Episodes from '../components/Episodes'
 import Cast from '../components/Cast'
 import { defaultImage } from '../utils/defaultImage'
 import { episodesLimit, castLimit } from '../utils/itemsLimit'
-import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const ShowInfo = () => {
   const params = useParams()
-  const { loading, error, data: show } = useAsync(() => TVMazeApi.getShowDetails(params.id), [params.id])
+  const showDetailsQuery = useQuery({
+    queryKey: ['shows', params.id],
+    queryFn: () => TVMazeApi.getShowDetails(params.id),
+    retry: 5,
+    enabled: !!params.id,
+  })
+  const show = showDetailsQuery?.data?.data
 
-  return loading ? (
+  return showDetailsQuery.isLoading ? (
     <Loader />
-  ) : error ? (
-    <Message variant="red">{error}</Message>
+  ) : showDetailsQuery.isError ? (
+    <Message variant="red">{showDetailsQuery.error.message}</Message>
   ) : !show ? (
     <Message variant="info">There is no such show</Message>
   ) : (

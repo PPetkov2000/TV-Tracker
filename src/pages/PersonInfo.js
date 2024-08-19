@@ -1,22 +1,34 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
 import CastCredits from '../components/CastCredits'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { defaultImage } from '../utils/defaultImage'
-import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const PersonInfo = () => {
   const params = useParams()
-  const { loading, error, data: person } = useAsync(() => TVMazeApi.getPersonDetails(params.id), [params.id])
-  const { data: castCredits } = useAsync(() => TVMazeApi.getCastCredits(params.id), [params.id])
+  const personDetailsQuery = useQuery({
+    queryKey: ['persons', params.id],
+    queryFn: () => TVMazeApi.getPersonDetails(params.id),
+    retry: 5,
+    enabled: !!params.id,
+  })
+  const castCreditsQuery = useQuery({
+    queryKey: ['persons', params.id],
+    queryFn: () => TVMazeApi.getCastCredits(params.id),
+    retry: 5,
+    enabled: !!params.id,
+  })
+  const person = personDetailsQuery?.data?.data
+  const castCredits = castCreditsQuery?.data?.data
   const personShows = castCredits?.map((x) => x._embedded.show)
 
-  return loading ? (
+  return personDetailsQuery.isLoading ? (
     <Loader />
-  ) : error ? (
-    <Message variant="red">{error}</Message>
+  ) : personDetailsQuery.isError ? (
+    <Message variant="red">{personDetailsQuery.error.message}</Message>
   ) : (
     <>
       <section className="person-info">

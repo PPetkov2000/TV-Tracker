@@ -1,19 +1,25 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { defaultImage } from '../utils/defaultImage'
-import useAsync from '../hooks/useAsync'
 import TVMazeApi from '../services/api/TVMazeApi'
 
 const CharacterInfo = () => {
   const params = useParams()
-  const { loading, error, data: character } = useAsync(() => TVMazeApi.getCharacterDetails(params.id), [params.id])
+  const characterDetailsQuery = useQuery({
+    queryKey: ['persons', params.id],
+    queryFn: () => TVMazeApi.getCharacterDetails(params.id),
+    retry: 5,
+    enabled: !!params.id,
+  })
+  const character = characterDetailsQuery?.data?.data
 
-  return loading ? (
+  return characterDetailsQuery.isLoading ? (
     <Loader />
-  ) : error ? (
-    <Message variant="red">{error}</Message>
+  ) : characterDetailsQuery.isError ? (
+    <Message variant="red">{characterDetailsQuery.error.message}</Message>
   ) : (
     <section className="character-info">
       <div className="content-wrapper">
