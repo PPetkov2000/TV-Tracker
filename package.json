@@ -1,6 +1,7 @@
 {
   "name": "tv-shows-tracker",
   "version": "1.0.0",
+  "homepage": "https://ppetkov2000.github.io/TV-Tracker",
   "engines": {
     "node": "16.x"
   },
@@ -19,6 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
