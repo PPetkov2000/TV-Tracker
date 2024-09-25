@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktv_shows_tracker=self.webpackChunktv_shows_tracker||[]).push([[859],{8859:function(e,r,t){t.r(r);t(2791);var s=t(184);r.default=function(){return(0,s.jsx)("footer",{className:"footer",children:(0,s.jsx)("div",{className:"content-wrapper",children:(0,s.jsxs)("h3",{className:"footer__text",children:["\xa9 TV Tracker ",(new Date).getFullYear().toString()]})})})}}}]);
-//# sourceMappingURL=859.9fd6c056.chunk.js.map
